@@ -14,7 +14,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#define disk_sayisi 3
+
+#define disk_sayisi 20
 
 int kaynak = 1, yardimci = 2, hedef = 3;
 
@@ -70,56 +71,6 @@ void disk_no_ata(platform *y) {
 }
 
 /*
- * Bu fonksiyondaki sayaclar ilgili array'in kacinci elemanina islem yapilmasi gerektigini tutar.
- * Eger islem yapildiysa ilgili arrayin aktarilan elemani yerine '0' gelir.
- * Sayaclar her islem sonunda guncellenir.
- */
-void disk_tasi(platform *y) {
-
-	if (kaynak == 1 && hedef == 2) {
-
-		y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3) + 1] =
-				y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)];
-		y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)] = 0;
-	}
-
-	if (kaynak == 1 && hedef == 3) {
-
-		y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3) + 1] =
-				y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)];
-		y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)] = 0;
-	}
-
-	if (kaynak == 2 && hedef == 1) {
-
-		y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3) + 1] =
-				y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)];
-		y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)] = 0;
-	}
-
-	if (kaynak == 2 && hedef == 3) {
-
-		y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3) + 1] =
-				y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)];
-		y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)] = 0;
-	}
-
-	if (kaynak == 3 && hedef == 1) {
-
-		y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3) + 1] =
-				y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)];
-		y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)] = 0;
-	}
-
-	if (kaynak == 3 && hedef == 2) {
-
-		y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3) + 1] =
-				y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)];
-		y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)] = 0;
-	}
-}
-
-/*
  * Eger array de 0 adet eleman varsa -1 dondurur.
  * Eger array de 3 adet eleman varsa 2 dondurur.
  */
@@ -138,6 +89,56 @@ int sifirdan_farkli_eleman_say(const int a[], int disk) {
 }
 
 /*
+ * Bu fonksiyondaki sayaclar ilgili array'in kacinci elemanina islem yapilmasi gerektigini tutar.
+ * Eger islem yapildiysa ilgili arrayin aktarilan elemani yerine '0' gelir.
+ * Sayaclar her islem sonunda guncellenir.
+ */
+void disk_tasi(platform *y) {
+
+	if (kaynak == 1 && hedef == 2) {
+
+		y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi) + 1] =
+				y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)];
+		y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)] = 0;
+	}
+
+	if (kaynak == 1 && hedef == 3) {
+
+		y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi) + 1] =
+				y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)];
+		y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)] = 0;
+	}
+
+	if (kaynak == 2 && hedef == 1) {
+
+		y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi) + 1] =
+				y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)];
+		y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)] = 0;
+	}
+
+	if (kaynak == 2 && hedef == 3) {
+
+		y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi) + 1] =
+				y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)];
+		y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)] = 0;
+	}
+
+	if (kaynak == 3 && hedef == 1) {
+
+		y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi) + 1] =
+				y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)];
+		y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)] = 0;
+	}
+
+	if (kaynak == 3 && hedef == 2) {
+
+		y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi) + 1] =
+				y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)];
+		y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)] = 0;
+	}
+}
+
+/*
  * Recursive function olarak hanoi tower probleminin cozumunu yapar.
  */
 void coz(platform* y, int disk, int kaynak, int yardimci, int hedef) {
@@ -150,53 +151,47 @@ void coz(platform* y, int disk, int kaynak, int yardimci, int hedef) {
 
 		if (kaynak == 1 && hedef == 2) {
 
-			y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3) + 1] =
-					y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)];
-			y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)] = 0;
-
+			y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi) + 1] =
+					y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)];
+			y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)] = 0;
 		}
 
 		if (kaynak == 1 && hedef == 3) {
 
-			y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3) + 1] =
-					y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)];
-			y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3)] = 0;
-
+			y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi) + 1] =
+					y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)];
+			y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi)] = 0;
 		}
 
 		if (kaynak == 2 && hedef == 1) {
 
-			y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3) + 1] =
-					y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)];
-			y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)] = 0;
-
+			y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi) + 1] =
+					y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)];
+			y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)] = 0;
 		}
 
 		if (kaynak == 2 && hedef == 3) {
 
-			y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3) + 1] =
-					y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)];
-			y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3)] = 0;
-
+			y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi) + 1] =
+					y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)];
+			y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi)] = 0;
 		}
 
 		if (kaynak == 3 && hedef == 1) {
 
-			y->bar1[sifirdan_farkli_eleman_say(y->bar1, 3) + 1] =
-					y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)];
-			y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)] = 0;
-
+			y->bar1[sifirdan_farkli_eleman_say(y->bar1, disk_sayisi) + 1] =
+					y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)];
+			y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)] = 0;
 		}
 
 		if (kaynak == 3 && hedef == 2) {
 
-			y->bar2[sifirdan_farkli_eleman_say(y->bar2, 3) + 1] =
-					y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)];
-			y->bar3[sifirdan_farkli_eleman_say(y->bar3, 3)] = 0;
-
+			y->bar2[sifirdan_farkli_eleman_say(y->bar2, disk_sayisi) + 1] =
+					y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)];
+			y->bar3[sifirdan_farkli_eleman_say(y->bar3, disk_sayisi)] = 0;
 		}
 
-	//	disk_tasi(y);
+		//	disk_tasi(y);
 		kuleleri_ekrana_yaz(*y);
 
 		coz(y, disk - 1, yardimci, kaynak, hedef);
@@ -205,7 +200,7 @@ void coz(platform* y, int disk, int kaynak, int yardimci, int hedef) {
 
 int main() {
 
-	int disk = 3;
+	int disk = disk_sayisi;
 
 	platform *kule;
 	kule = (platform*) malloc(sizeof(platform));
